@@ -11,5 +11,5 @@ class Development(Config):
     SUDO_USERS = []  # List of id's for users which have sudo access to the bot.
     LOAD = []
     NO_LOAD = []
-    TELETHON_HASH = ff3b1871585d32a794465da51b077361 # for purge stuffs
-    TELETHON_ID = 1519291
+    TELETHON_HASH = "ff3b1871585d32a794465da51b077361" # for purge stuffs
+    TELETHON_ID = "1519291"
