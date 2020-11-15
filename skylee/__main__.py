@@ -42,7 +42,7 @@ Se il mio padrone ti ha approvato come beta tester clicca il pulsante qui sotto 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true
+            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true"
         ),
         InlineKeyboardButton(text="Contattami 📢", url="https://t.me/doggy_cheems"),
     ]
