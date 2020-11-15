@@ -32,35 +32,36 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
-Ciao il mio nome è *{dispatcher.bot.first_name}*. se stai usando questo bot probabilmente hai ottenuto il permesso dal mio creatore quindi per eventuali problemi contatta @doggy_cheems.
-Sono qui per aiutarti a gestire il tuo gruppo, sono ancora in beta e in fase di traduzione quindi perdonami se sarò lento o alcune funzioni saranno in inglese.
-Vuoi aiutare il progetto? Contatta il mio padrone @doggy_cheems.
-Se il mio padrone ti ha approvato come beta tester clicca il pulsante qui sotto per aggiungermi al tuo gruppo!
+Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
+I'm here to make your group management fun and easy!
+i have lots of handy features, such as flood control, a warning system, a note keeping system, and even replies on predetermined filters.
+Any issues or need help related to me? join our group [skylee support chat](https://t.me/skyleebot).
+Wanna Add me to your Group? Just click the button below!
+"""
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true"
+            text="Add to Group 👥", url="t.me/doggycheems_bot?startgroup=true"
         ),
-        InlineKeyboardButton(text="Segnala bug 📢", url="https://t.me/doggy_cheems"),
+        InlineKeyboardButton(text="Updates 📢", url="https://t.me/doggy_cheems"),
     ]
 ]
 
-buttons += [[InlineKeyboardButton(text="Comandi ❔", callback_data="help_back")]]
+buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
 
 
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
 the things I can help you with.
-
-*Main* comandi disponibili:
- × /start: Avviami e controlla se sono online, in caso contrario contatta @doggy_cheems...
- × /help: Ricevi questo messaggio in privato.
- × /help <modulo>: Ricevi in privato le info di quel modulo.
- × /settings: in privato, ricevi le impostazioni di tutti i comandi.
-   - in a group: riceverai in privato le impostazioni di tale gruppo.
- \nClicca sui pulsanti sotto per ottenere info sui vari moduli!"""
+*Main* commands available:
+ × /start: Starts me, can be used to check i'm alive or no...
+ × /help: PM's you this message.
+ × /help <module name>: PM's you info about that module.
+ × /settings: in PM: will send you your settings for all supported modules.
+   - in a group: will redirect you to pm, with all that chat's settings.
+ \nClick on the buttons below to get documentation about specific modules!"""
 
 
 IMPORTED = {}
