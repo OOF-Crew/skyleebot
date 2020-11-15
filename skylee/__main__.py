@@ -32,29 +32,33 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
+Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
 
-Ciao il mio nome è *{dispatcher.bot.first_name}*. se stai usando questo bot probabilmente hai ottenuto il permesso dal mio creatore quindi per eventuali problemi contatta @doggy_cheems.
-Sono qui per aiutarti a gestire il tuo gruppo, sono ancora in beta e in fase di traduzione quindi perdonami se sarò lento o alcune funzioni saranno in inglese.
-Vuoi aiutare il progetto? Contatta il mio padrone tramite il pulsante apposito.
-Se il mio padrone ti ha approvato come beta tester clicca il pulsante qui sotto per aggiungermi al tuo gruppo!
+I'm here to make your group management fun and easy!
+i have lots of handy features, such as flood control, a warning system, a note keeping system, and even replies on predetermined filters.
+
+Any issues or need help related to me? join our group [skylee support chat](https://t.me/skyleebot).
+
+Wanna Add me to your Group? Just click the button below!
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true"
+            text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true"
         ),
-        InlineKeyboardButton(text="Contattami 📢", url="https://t.me/doggy_cheems"),
+        InlineKeyboardButton(text="Updates 📢", url="https://t.me/skyleebot"),
     ]
 ]
 
-buttons += [[InlineKeyboardButton(text="Comandi ❔", callback_data="help_back")]]
+buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
 
 
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
 the things I can help you with.
+
 *Main* commands available:
  × /start: Starts me, can be used to check i'm alive or no...
  × /help: PM's you this message.
@@ -161,7 +165,7 @@ def start(update, context):
 
         else:
             update.effective_message.reply_photo(
-                "https://telegra.ph/file/30ccf3b7b71fdfbd98996.jpg",
+                "https://telegra.ph/file/4edfb3738a35bdfa1922f.jpg",
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
