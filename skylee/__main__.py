@@ -32,23 +32,23 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
-Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
-I'm here to make your group management fun and easy!
-i have lots of handy features, such as flood control, a warning system, a note keeping system, and even replies on predetermined filters.
-Any issues or need help related to me? join our group [skylee support chat](https://t.me/skyleebot).
-Wanna Add me to your Group? Just click the button below!
+
+Ciao il mio nome è *{dispatcher.bot.first_name}*. se stai usando questo bot probabilmente hai ottenuto il permesso dal mio creatore quindi per eventuali problemi contatta @doggy_cheems.
+Sono qui per aiutarti a gestire il tuo gruppo, sono ancora in beta e in fase di traduzione quindi perdonami se sarò lento o alcune funzioni saranno in inglese.
+Vuoi aiutare il progetto? Contatta il mio padrone tramite il pulsante apposito.
+Se il mio padrone ti ha approvato come beta tester clicca il pulsante qui sotto per aggiungermi al tuo gruppo!
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Add to Group 👥", url="t.me/doggycheems_bot?startgroup=true"
+            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true
         ),
-        InlineKeyboardButton(text="Updates 📢", url="https://t.me/doggy_cheems"),
+        InlineKeyboardButton(text="Contattami 📢", url="https://t.me/doggy_cheems"),
     ]
 ]
 
-buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
+buttons += [[InlineKeyboardButton(text="Comandi ❔", callback_data="help_back")]]
 
 
 HELP_STRINGS = f"""
