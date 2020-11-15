@@ -32,11 +32,11 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
-Ciao il mio nome è *{dispatcher.bot.first_name}*. se stai usando questo bot probabilmente hai ottenuto il permesso dal mio creatore quindi per eventuali problemi contatta @doggy_cheems.
+Ciao il mio nome è *{dispatcher.bot.first_name}*. se stai usando questo bot probabilmente hai ottenuto il permesso dal mio creatore quindi per eventuali problemi contatta @doggy_cheems e ti aiuterà.
 
 Sono qui per aiutarti a gestire il tuo gruppo, sono ancora in beta e in fase di traduzione quindi perdonami se sarò lento o alcune funzioni saranno in inglese.
 
-Vuoi aiutare il progetto? Contatta il mio padrone [doggy](https://t.me/doggy_cheems).
+Vuoi aiutare il progetto? Contatta il mio padrone [doggy :D](https://t.me/doggylinks).
 
 Se il mio padrone ti ha approvato come beta tester clicca il pulsante qui sotto per aggiungermi al tuo gruppo!
 """
