@@ -1,8 +1,9 @@
+pip==20.2.4
 future
 emoji
 requests
-telethon
-sqlalchemy
+telethon==1.17.5
+sqlalchemy==1.4.0
 python-telegram-bot==12.8
 psycopg2-binary
 pythonping
