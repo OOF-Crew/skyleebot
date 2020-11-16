@@ -32,36 +32,45 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
-Ciao! il mio nome è *{dispatcher.bot.first_name}*. sono un bot di gestione gruppi gestito da @doggycheems
+
+Ciao! il mio nome è Doggy Cheems. sono un bot di gestione gruppi gestito da @doggycheems
+
 INFO:
+
 VERSIONE OS: 0.0.1 beta
+
 BETA: chiusa (riservata a è gente che conosco)
+
 CREATORE: @doggycheems
+
 SERVER: attualmente poiché sono in beta sono hostato su heroku
+
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true"
+            text="Aggiungimi a un gruppo 👥", url="t.me/doggycheems_bot?startgroup=true"
         ),
-        InlineKeyboardButton(text="contattami 📢", url="https://t.me/doggy_cheems"),
+        InlineKeyboardButton(text="Updates 📢", url="https://t.me/doggy_cheems"),
     ]
 ]
 
-buttons += [[InlineKeyboardButton(text="Comandi ❔", callback_data="help_back")]]
+buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
 
 
 HELP_STRINGS = f"""
-Ciao! Mi chiamo *{dispatcher.bot.first_name}*.
-Sono un bot di gestione gruppi appartenente a @doggy_cheems.
-*Main* i miei comandi:
- × /start: Avviami e controlla se sono online.
- × /help: Ricevi questo messaggio in privato.
- × /help <modulo>: Ricevi in privato info su quel modulo.
- × /settings: in privato: ricevi le impostazioni di tutti i moduli.
-   - in un gruppo: ottieni in privato le impostazioni di quel gruppo.
- \nUsa i borrono qui sotto per imparare quello di cui sono capace!"""
+Hello there! My name is *{dispatcher.bot.first_name}*.
+I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
+the things I can help you with.
+
+*Main* commands available:
+ × /start: Starts me, can be used to check i'm alive or no...
+ × /help: PM's you this message.
+ × /help <module name>: PM's you info about that module.
+ × /settings: in PM: will send you your settings for all supported modules.
+   - in a group: will redirect you to pm, with all that chat's settings.
+ \nClick on the buttons below to get documentation about specific modules!"""
 
 
 IMPORTED = {}
@@ -161,7 +170,7 @@ def start(update, context):
 
         else:
             update.effective_message.reply_photo(
-                "https://telegra.ph/file/4edfb3738a35bdfa1922f.jpg",
+                "https://telegra.ph/file/30ccf3b7b71fdfbd98996.jpg",
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
