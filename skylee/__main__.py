@@ -32,11 +32,11 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 PM_START_TEXT = f"""
-Ciao! il mio nome è *{dispatcher.bot.first_name}*. sono un bot di gestione gruppi gestito da @doggy_cheems
+Ciao! il mio nome è *{dispatcher.bot.first_name}*. sono un bot di gestione gruppi gestito da @doggycheems
 INFO:
 VERSIONE: 0.0.1 beta
 BETA: chiusa (riservata a è gente che conosco)
-CREATORE: @doggy_cheems
+CREATORE: @doggycheems
 SERVER: attualmente poiché sono in beta sono hostato su heroku
 """
 
@@ -162,7 +162,7 @@ def start(update, context):
 
         else:
             update.effective_message.reply_photo(
-                "https://telegra.ph/file/4edfb3738a35bdfa1922f.jpg",
+                "https://telegra.ph/file/30ccf3b7b71fdfbd98996.jpg",
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
