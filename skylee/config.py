@@ -15,3 +15,4 @@ class Development(Config):
     NO_LOAD = []
     TELETHON_HASH = "ff3b1871585d32a794465da51b077361" # for purge stuffs
     TELETHON_ID = "1519291"
+    SPAMWATCH_API = "rIrKhtYapyC1fQ1LZ6DmOP1VsM~O1XKevntJGfan79i8u_l1g5sChN5cSxQIV1Md"
