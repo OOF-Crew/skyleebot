@@ -9,6 +9,8 @@ class Development(Config):
     MESSAGE_DUMP = '-354482383' # some group chat that your bot is a member of
     USE_MESSAGE_DUMP = True
     SUDO_USERS = "1037394974" "1343416318"  # List of id's for users which have sudo access to the bot.
+    SUPPORT_USERS = "1037394974" "1343416318"
+    WHITELIST_USERS = "1037394974" "1343416318"
     LOAD = []
     NO_LOAD = []
     TELETHON_HASH = "ff3b1871585d32a794465da51b077361" # for purge stuffs
