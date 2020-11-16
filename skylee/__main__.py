@@ -34,7 +34,7 @@ from skylee.modules.helper_funcs.alternate import typing_action
 PM_START_TEXT = f"""
 Ciao! il mio nome è *{dispatcher.bot.first_name}*. sono un bot di gestione gruppi gestito da @doggycheems
 INFO:
-VERSIONE: 0.0.1 beta
+VERSIONE OS: 0.0.1 beta
 BETA: chiusa (riservata a è gente che conosco)
 CREATORE: @doggycheems
 SERVER: attualmente poiché sono in beta sono hostato su heroku
@@ -86,7 +86,7 @@ for module_name in ALL_MODULES:
     if not imported_module.__mod_name__.lower() in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
-        raise Exception("Can't have two modules with the same name! Please change one")
+        raise Exception("Non posso avere due o più moduli con lo stesso nome.")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -171,12 +171,12 @@ def start(update, context):
             )
     else:
         update.effective_message.reply_text(
-            "Sending you a warm hi & wishing your day is a happy one!"
+            "Buona giornata!"
         )
 
 
 def error_handler(update, context):
-    """Log the error and send a telegram message to notify the developer."""
+    """Logga l'errore e mandalo a @doggycheems."""
     # Log the error before we do anything else, so we can see it even if something breaks.
     LOGGER.error(msg="Exception while handling an update:", exc_info=context.error)
 
@@ -214,7 +214,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "Here is the help for the *{}* module:\n".format(
+                "Ecco la descrizione del mofulo *{}* spero di essere stato utile:\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -223,7 +223,7 @@ def help_button(update, context):
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="⬅️ Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="⬅️ Indietro", callback_data="help_back")]]
                 ),
             )
 
@@ -281,7 +281,7 @@ def get_help(update, context):
     if chat.type != chat.PRIVATE:
 
         update.effective_message.reply_text(
-            "Contact me in PM to get the list of possible commands.",
+            "Scrivimi in privato per spere i comandi.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -298,7 +298,7 @@ def get_help(update, context):
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
-            "Here is the available help for the *{}* module:\n".format(
+            "Ecco una descrizione del modulo *{}* spero di essere stato utile:\n".format(
                 HELPABLE[module].__mod_name__
             )
             + HELPABLE[module].__help__
@@ -324,14 +324,14 @@ def send_settings(chat_id, user_id, user=False):
             )
             dispatcher.bot.send_message(
                 user_id,
-                "These are your current settings:" + "\n\n" + settings,
+                "Ecco le impostazioni:" + "\n\n" + settings,
                 parse_mode=ParseMode.MARKDOWN,
             )
 
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any user specific settings available :'(",
+                "Non riesco a trovare le impostazioni :'(",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -340,7 +340,7 @@ def send_settings(chat_id, user_id, user=False):
             chat_name = dispatcher.bot.getChat(chat_id).title
             dispatcher.bot.send_message(
                 user_id,
-                text="Which module would you like to check {}'s settings for?".format(
+                text="Vuoi sapere le impostazioni di questo modulo {}?".format(
                     chat_name
                 ),
                 reply_markup=InlineKeyboardMarkup(
@@ -350,8 +350,8 @@ def send_settings(chat_id, user_id, user=False):
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any chat settings available :'(\nSend this "
-                "in a group chat you're admin in to find its current settings!",
+                "Non riesco a trovare degli amministratori :'(\nRiprova "
+                "in un gruppo in cui sei amministratore per vedere le impostazioni!",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -369,7 +369,7 @@ def settings_button(update, context):
             chat_id = mod_match.group(1)
             module = mod_match.group(2)
             chat = context.bot.get_chat(chat_id)
-            text = "*{}* has the following settings for the *{}* module:\n\n".format(
+            text = "*{}* ha le seguenti impostazioni per il modulo *{}*:\n\n".format(
                 escape_markdown(chat.title), CHAT_SETTINGS[module].__mod_name__
             ) + CHAT_SETTINGS[module].__chat_settings__(chat_id, user.id)
             query.message.reply_text(
@@ -392,8 +392,8 @@ def settings_button(update, context):
             curr_page = int(prev_match.group(2))
             chat = context.bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Hey ci sono troppe impostazioni per il modulo {} - scegli cosa ti interessa "
+                "ti interessa.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         curr_page - 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -406,8 +406,8 @@ def settings_button(update, context):
             next_page = int(next_match.group(2))
             chat = context.bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Hey ci sono troppe impostazioni per il modulo {} - scegli cosa "
+                "ti interessa.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         next_page + 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -419,8 +419,8 @@ def settings_button(update, context):
             chat_id = back_match.group(1)
             chat = context.bot.get_chat(chat_id)
             query.message.reply_text(
-                text="Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(escape_markdown(chat.title)),
+                text="Hey ci sono troppe impostazioni per il modulo {} - scegli cosa "
+                "ti interessa.".format(escape_markdown(chat.title)),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
@@ -565,7 +565,7 @@ def main():
             client.run_until_disconnected()
 
     else:
-        LOGGER.info("Using long polling.")
+        LOGGER.info("DOGGY ONLINE.")
         updater.start_polling(timeout=15, read_latency=4)
         client.run_until_disconnected()
 
@@ -573,6 +573,6 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
+    LOGGER.info("Ho installato tutti i moduli: " + str(ALL_MODULES))
     client.start(bot_token=TOKEN)
     main()
