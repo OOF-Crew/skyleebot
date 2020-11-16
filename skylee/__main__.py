@@ -43,8 +43,7 @@ BETA: chiusa (riservata a è gente che conosco)
 
 CREATORE: @doggycheems
 
-SERVER: attualmente poiché sono in beta sono hostato su heroku
-
+SERVER: attualmente poiché sono in beta sono hostato su heroku.
 """
 
 buttons = [
