@@ -37,7 +37,7 @@ Ciao! il mio nome è Doggy Cheems. sono un bot di gestione gruppi gestito da @do
 
 INFO:
 
-VERSIONE OS: 0.0.1 beta
+VERSIONE OS: 0.2.0 beta
 
 BETA: chiusa (riservata a è gente che conosco)
 
@@ -178,7 +178,7 @@ def start(update, context):
             )
     else:
         update.effective_message.reply_text(
-            "Sending you a warm hi & wishing your day is a happy one!"
+            "Sono correttamente funzionante✅!"
         )
 
 
