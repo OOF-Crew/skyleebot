@@ -422,7 +422,7 @@ NOAFK = (
     "{} is back online!",
     "{} is finally here!",
     "Welcome back! {}",
-    "OwO {} is here!",
+    "Finally {} is here!",
 )
 
 AFK = (
@@ -431,7 +431,7 @@ AFK = (
     "See you later {}!",
     "Goodbye {}!",
     "Come back soon {}!",
-    "Kthnxbye {}..",
+    "Adios {}..",
 )
 
 SHGS = (
