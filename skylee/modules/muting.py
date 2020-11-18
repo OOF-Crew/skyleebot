@@ -35,37 +35,37 @@ def mute(update, context):
 
     if user_can_ban(chat, user, context.bot.id) == False:
         message.reply_text(
-            "You don't have enough rights to restrict someone from talking!"
+            "Non hai i permessi sufficienti per mutare qualcuno!"
         )
         return ""
 
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You'll need to either give me a username to mute, or reply to someone to be muted."
+            "Sei quello intelligente della famiglia vero? devi specificarmi l'utente da mutare."
         )
         return ""
 
     if user_id == context.bot.id:
-        message.reply_text("Yeahh... I'm not muting myself!")
+        message.reply_text("Ho capito che magari ti sto antipatico ma non mi muterò mai da solo!")
         return ""
 
     member = chat.get_member(int(user_id))
 
     if member:
         if is_user_admin(chat, user_id, member=member):
-            message.reply_text("Well i'm not gonna stop an admin from talking!")
+            message.reply_text("Beh per mutare un admin dovrei avere i superpoteri")
 
         elif member.can_send_messages is None or member.can_send_messages:
             context.bot.restrict_chat_member(
                 chat.id, user_id, permissions=ChatPermissions(can_send_messages=False)
             )
-            message.reply_text("👍🏻 muted! 🤐")
+            message.reply_text("Ok ora statti zitto🤐")
             return (
                 "<b>{}:</b>"
                 "\n#MUTE"
                 "\n<b>Admin:</b> {}"
-                "\n<b>User:</b> {}".format(
+                "\n<b>Utente:</b> {}".format(
                     html.escape(chat.title),
                     mention_html(user.id, user.first_name),
                     mention_html(member.user.id, member.user.first_name),
@@ -73,9 +73,9 @@ def mute(update, context):
             )
 
         else:
-            message.reply_text("This user is already taped 🤐")
+            message.reply_text("Beh questo utente è gia mutato 🤐")
     else:
-        message.reply_text("This user isn't in the chat!")
+        message.reply_text("Ma sei scemo? l'utente non è presente nel gruppo!")
 
     return ""
 
@@ -92,13 +92,13 @@ def unmute(update, context):
     args = context.args
 
     if user_can_ban(chat, user, context.bot.id) == False:
-        message.reply_text("You don't have enough rights to unmute people")
+        message.reply_text("Non hai i permessi sufficienti per smutare qualcuno!")
         return ""
 
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You'll need to either give me a username to unmute, or reply to someone to be unmuted."
+            "Per ora non posso leggerti la mente per sapere chi smutare perciò almeno dimmi chi smutare."
         )
         return ""
 
@@ -111,7 +111,7 @@ def unmute(update, context):
             and member.can_send_other_messages
             and member.can_add_web_page_previews
         ):
-            message.reply_text("This user already has the right to speak.")
+            message.reply_text("Questo utente non è mutato, genio.")
         else:
             context.bot.restrict_chat_member(
                 chat.id,
@@ -127,12 +127,12 @@ def unmute(update, context):
                     can_add_web_page_previews=True,
                 ),
             )
-            message.reply_text("Yep! this user can start talking again...")
+            message.reply_text("Ok hai il diritto di parlare ma non cagare il cazzo per evitare un altro mute")
             return (
                 "<b>{}:</b>"
                 "\n#UNMUTE"
                 "\n<b>Admin:</b> {}"
-                "\n<b>User:</b> {}".format(
+                "\n<b>Utente:</b> {}".format(
                     html.escape(chat.title),
                     mention_html(user.id, user.first_name),
                     mention_html(member.user.id, member.user.first_name),
@@ -140,8 +140,8 @@ def unmute(update, context):
             )
     else:
         message.reply_text(
-            "This user isn't even in the chat, unmuting them won't make them talk more than they "
-            "already do!"
+            "ma sei scemo?"
+            "L'utente non è nel gruppo!"
         )
 
     return ""
@@ -161,35 +161,35 @@ def temp_mute(update, context):
 
     if user_can_ban(chat, user, context.bot.id) == False:
         message.reply_text(
-            "You don't have enough rights to restrict someone from talking!"
+            "Non hai abbastanza permessi per mutare scemo!"
         )
         return ""
 
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("O sono scemo io o lo sei tu, DIMMI CHI MUTARE.")
         return ""
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user")
+        if excp.message == "Non ho trovato questo utente forse ho bisogno di un nuovo paio di occhiali, oppure tu hai bisogno di un nuovo cervello":
+            message.reply_text("Non trovo questo utente")
             return ""
         else:
             raise
 
     if is_user_admin(chat, user_id, member):
-        message.reply_text("I really wish I could mute admins...")
+        message.reply_text("Perchè cazzo dovrei mutare un admin")
         return ""
 
     if user_id == context.bot.id:
-        message.reply_text("I'm not gonna MUTE myself, are you crazy?")
+        message.reply_text("Te lo scordi, non mi muterò mai da solo?")
         return ""
 
     if not reason:
-        message.reply_text("You haven't specified a time to mute this user for!")
+        message.reply_text("Almeno dimmi per quanto mutarlo!")
         return ""
 
     split_reason = reason.split(None, 1)
@@ -209,8 +209,8 @@ def temp_mute(update, context):
         "<b>{}:</b>"
         "\n#TEMP MUTED"
         "\n<b>Admin:</b> {}"
-        "\n<b>User:</b> {}"
-        "\n<b>Time:</b> {}".format(
+        "\n<b>Utente:</b> {}"
+        "\n<b>Tempo:</b> {}".format(
             html.escape(chat.title),
             mention_html(user.id, user.first_name),
             mention_html(member.user.id, member.user.first_name),
@@ -228,15 +228,15 @@ def temp_mute(update, context):
                 until_date=mutetime,
                 permissions=ChatPermissions(can_send_messages=False),
             )
-            message.reply_text("shut up! 🤐 Taped for {}!".format(time_val))
+            message.reply_text("zitto coglione! 🤐 sarai mutato per {}!".format(time_val))
             return log
         else:
-            message.reply_text("This user is already muted.")
+            message.reply_text("questo utente è gia mutato.")
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text("shut up! 🤐 Taped for {}!".format(time_val), quote=False)
+            message.reply_text("Statti zitto coglione! 🤐 imarrai muto per {}!".format(time_val), quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -247,7 +247,7 @@ def temp_mute(update, context):
                 chat.id,
                 excp.message,
             )
-            message.reply_text("Well damn, I can't mute that user.")
+            message.reply_text("Non riesco a mutare questo utente.")
 
     return ""
 
@@ -262,7 +262,7 @@ This module allows you to do that easily, by exposing some common actions, so ev
  × /tmute <userhandle> x(m/h/d): Mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
  × /unmute <userhandle>: Unmutes a user. Can also be used as a reply, muting the replied to user. 
 An example of temporarily mute someone:
-`/tmute @username 2h`; This mutes a user for 2 hours.
+`/tmute @doggycheems 2h`; This mutes a user for 2 hours.
 """
 
 __mod_name__ = "Muting"
