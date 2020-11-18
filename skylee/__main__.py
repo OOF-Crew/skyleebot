@@ -507,7 +507,7 @@ def is_chat_allowed(update, context):
         chat_id = update.effective_message.chat_id
         if chat_id not in WHITELIST_CHATS:
             context.bot.send_message(
-                chat_id=update.message.chat_id, text="Unallowed chat! Leaving..."
+                chat_id=update.message.chat_id, text="Lo staff del bot ha bannato questa chat ora abbandonerò, contatta @doggycheems per dettagli"
             )
             try:
                 context.bot.leave_chat(chat_id)
@@ -517,7 +517,7 @@ def is_chat_allowed(update, context):
         chat_id = update.effective_message.chat_id
         if chat_id in BLACKLIST_CHATS:
             context.bot.send_message(
-                chat_id=update.message.chat_id, text="Unallowed chat! Leaving..."
+                chat_id=update.message.chat_id, text="Lo staff del bot ha bannato questa chat ora abbandonerò, contatta @doggycheems per dettagli"
             )
             try:
                 context.bot.leave_chat(chat_id)
@@ -527,7 +527,7 @@ def is_chat_allowed(update, context):
         chat_id = update.effective_message.chat_id
         if chat_id in BLACKLIST_CHATS:
             context.bot.send_message(
-                chat_id=update.message.chat_id, text="Unallowed chat, leaving"
+                chat_id=update.message.chat_id, text="Lo staff del bot ha bannato questa chat ora abbandonerò, contatta @doggycheems per dettagli"
             )
             try:
                 context.bot.leave_chat(chat_id)
@@ -572,7 +572,7 @@ def main():
             client.run_until_disconnected()
 
     else:
-        LOGGER.info("Using long polling.")
+        LOGGER.info("Bot online.")
         updater.start_polling(timeout=15, read_latency=4)
         client.run_until_disconnected()
 
