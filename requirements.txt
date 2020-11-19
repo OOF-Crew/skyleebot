@@ -3,7 +3,7 @@ cryptg
 future
 emoji
 requests
-telethon==1.17.5
+telethon
 sqlalchemy
 python-telegram-bot==12.8
 psycopg2-binary
